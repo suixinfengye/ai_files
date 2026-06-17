@@ -27,7 +27,7 @@ TEMPORARY_SCHEDULE_BY_SESSION = {
     'Regular': ['T00:30:00-T+1-T22:00:00-T22:30:00','T21:45:00'], #Open
     'PostTrade': ['T00:30:00-T00:35:00-T+1-T22:30:00','T21:45:00'],
     'Close': ['T00:30:00-T00:35:00-T00:40:00-T+1','T00:40:00'],
-    # 'SOQ': ['T+1-T+2-T+3602-T22:30:00','T21:45:00'],
+    # 'EOQ': ['T+1-T+2-T+3602-T22:30:00','T21:45:00'],
 }
 
 # --------------------------
@@ -39,13 +39,13 @@ DROPPED_FIELDS = {"SecurityExchange", "ProductComplex", "MsgType", "Text"}
 # Defaults / configuration
 # --------------------------
 DEFAULTS = {
-    "DEFAULT_FIX_USER": "fix_trlcg401_1",
-    "DEFAULT_BIN_USER": "bin_trlpsg101_1",
-    "DEFAULT_RMG_USER": "fixrm_epunamg51_1",
+    "DEFAULT_FIX_USER": "fix_tricgw101_1",
+    "DEFAULT_BIN_USER": "bin_tripsg101_1",
+    "DEFAULT_RMG_USER": "fixrm_epunarmg51_1",
     "DEFAULT_PROTOCOL": "FIX",
     "DEFAULT_SIDE": "Buy",  # semantic default
     "DEFAULT_ORDERQTY": "10",
-    "DEFAULT_LIMIT_PRICE": "func(LFC())",
+    "DEFAULT_LIMIT_PRICE": "Func(LFC())",
     "DEFAULT_ORDTYPE": "Limit",
     "DEFAULT_OUTRIGHT": f"{DEFAULT_CONTRACT_CODE}_M5",
     "DEFAULT_CARRY": f"{DEFAULT_CONTRACT_CODE}_M4_M5",
@@ -78,7 +78,7 @@ TAG_TO_FIELD: Dict[str, str] = {
     "1404": "EncryptedNewPassword",
     "1137": "DefaultApplVerID",
     "1409": "SessionStatus",
-    "1127": "TestReqID",
+    "112": "TestReqID",
     "7": "BeginSeqNo",
     "16": "EndSeqNo",
     "123": "GapFillFlag",
@@ -169,8 +169,8 @@ TAG_TO_FIELD: Dict[str, str] = {
     "434": "CxlRejResponseTo",
     "102": "CxlRejReason",
     "1328": "RejectText",
-    "1000": "RelatedHighPrice",
-    "1329": "RelatedLowPrice",
+    "1819": "RelatedHighPrice",
+    "1820": "RelatedLowPrice",
 
     # Execution Report (8)
     "526": "SecondaryClOrdID",
@@ -226,7 +226,7 @@ MSGTYPE_MAP_RESPONSE_FIX = {
     "r": "OrderMassCancelReport",
 
     # Optional RFQ/Quote responses
-    "AI": "QuoteResponse",
+    "AJ": "QuoteResponse",
     "AG": "QuoteRequestReject",
 }
 
@@ -318,7 +318,7 @@ NAME_TO_FIELD = {
     "ClientOrderID": "ID",
     "OriginalClientOrderID": "PreviousID",
     "OrderID": "ReferenceBy",
-    "TransactionTime": "TransactTime",
+    "TransactTime": "TransactTime",
     "Side": "Side",
     "OrderQuantity": "OrderQty",
     "OrderType": "OrderType",
@@ -413,14 +413,14 @@ MSGTYPE_MAP_REQUEST_RMG = {
     "5": "Logout",
 
     # Application
-    "OX": "PartyDetailsDefinitionRequest",
-    "OF": "PartyDetailsListRequest",
+    "CX": "PartyDetailsDefinitionRequest",
+    "CF": "PartyDetailsListRequest",
     "CS": "PartyRiskLimitsDefinitionRequest",
     "CL": "PartyRiskLimitsRequest",
-    "DO": "PartyActionRequest",
+    "DH": "PartyActionRequest",
 
     # Future use
-    "DM": "PartyEntitlementsDefinitionRequest",
+    "DA": "PartyEntitlementsDefinitionRequest",
 }
 MSGTYPE_MAP_RESPONSE_RMG = {
     # Session/Admin
@@ -435,11 +435,11 @@ MSGTYPE_MAP_RESPONSE_RMG = {
     "B": "News",
 
     # Application (exchange -> client)
-    "OY": "PartyDetailsDefinitionRequestAck",
+    "CY": "PartyDetailsDefinitionRequestAck",
     "CG": "PartyDetailsListReport",
     "CT": "PartyRiskLimitsDefinitionRequestAck",
     "CM": "PartyRiskLimitsReport",
-    "DP": "PartyActionReport",
+    "DI": "PartyActionReport",
 
     # Future use
     "DB": "PartyEntitlementsDefinitionRequestAck",
@@ -469,7 +469,7 @@ RMG_TAG_TO_FIELD: Dict[str, str] = {
     "1404": "EncryptedNewPassword",
     "1137": "DefaultApplVerID",
     "1409": "SessionStatus",
-    "1127": "TestReqID",
+    "112": "TestReqID",
     "7": "BeginSeqNo",
     "16": "EndSeqNo",
     "123": "GapFillFlag",
@@ -488,7 +488,7 @@ RMG_TAG_TO_FIELD: Dict[str, str] = {
     "58": "Text",
 
     # Party Details Definition
-    "1508": "PartyDetailsListRequestID",
+    "1505": "PartyDetailsListRequestID",
     "1676": "NoPartyUpdates",
     "1324": "ListUpdateAction",
     "1671": "NoPartyDetails",
@@ -515,7 +515,7 @@ RMG_TAG_TO_FIELD: Dict[str, str] = {
     "1761": "RiskLimitRequestResult",
     "1762": "RiskLimitRequestStatus",
     "1677": "NoPartyRiskLimits",
-    "1668": "NoRiskLimits",
+    "1669": "NoRiskLimits",
     "1529": "NoRiskLimitTypes",
     "1530": "RiskLimitType",
     "1531": "RiskLimitAmount",
@@ -523,11 +523,11 @@ RMG_TAG_TO_FIELD: Dict[str, str] = {
 
     # Risk Limits Request/Report
     "1760": "RiskLimitRequestType",
-    "1687": "RiskLimitReportID",
+    "1667": "RiskLimitReportID",
     "325": "UnsolicitedIndicator",
     "1694": "NoPartyDetailSubIDs",
     "1695": "PartyDetailSubID",
-    "1696": "PartyDetailSubIDType",
+    "1696": "PartyDetailISubIDType",
     "1767": "RiskLimitAction",
     "1765": "RiskLimitUtilizationPercent",
     "1559": "NoRiskWarningLevels",
@@ -536,14 +536,14 @@ RMG_TAG_TO_FIELD: Dict[str, str] = {
     "1561": "RiskWarningLevelName",
 
     # Instrument Scope
-    "1544": "NoRiskInstrumentScopes",
+    "1534": "NoRiskInstrumentScopes",
     "1535": "InstrumentScopeOperator",
     "1616": "InstrumentScopeSecurityExchange",
     "1544": "InstrumentScopeProductComplex",
     "1545": "InstrumentScopeSecurityGroup",
     "1547": "InstrumentScopeSecurityType",
     "1548": "InstrumentScopeSecuritySubType",
-    "1558": "InstrumentScopeSecurityDesc",
+    "1556": "InstrumentScopeSecurityDesc",
     "1536": "InstrumentScopeSymbol",
 
     # MMP
@@ -835,7 +835,7 @@ def get_fix_tag_value(raw: str, tag: str) -> str:
     return match.group(1) if match else ''
 
 
-def gen_dummy_action_to_update_lfc(raw:str,test_case: Dict[str, Any])->str:
+def gen_dummpy_action_to_update_lfc(raw:str,test_case: Dict[str, Any])->str:
     symbol = get_fix_tag_value(raw, '55')
     price = get_fix_tag_value(raw, '44')
     tag_value = get_fix_tag_value(raw, '54')
@@ -861,7 +861,7 @@ def parse_case_messages(test_case: Dict[str, Any]) -> List[Dict[str, Any]]:
                 continue
             if get_fix_tag_value(raw, '40') == '4':
                 # stop order need to add action ahead to update the lfc
-                dummy = gen_dummy_action_to_update_lfc(raw,test_case)
+                dummy = gen_dummpy_action_to_update_lfc(raw,test_case)
                 if dummy:
                     ok = convert_one_line_action(dummy, parsed_msgs, test_case, index)
                     if not ok:
@@ -1020,7 +1020,7 @@ def build_case_rows(test_case: Dict[str, Any],
         dynamic_fields.add("#_previousID")
         dynamic_fields.add("ContractCode")
         dynamic_fields.add("startTime")
-        dynamic_fields.add("toStartTime")
+        dynamic_fields.add("tomStartTime")
         dynamic_fields.add("ClOrdID")
         dynamic_fields.add("ExecInst")
 
@@ -1072,7 +1072,7 @@ def build_case_rows(test_case: Dict[str, Any],
             elif f == "MassCancelRequestType" and field_values.get("__action_alias__") == "MassCancel":
                 out.append(field_values.get(f,7))
             elif f == "ExecInst" and field_values.get("__action_alias__") in ["New",'Amend']:
-                out.append(field_values.get(f,'6'))
+                out.append(field_values.get(f,'o'))
             elif f in ("ContractCode") and field_values.get("__action_alias__") in ("MarketSession",'MassCancel'):
                 out.append(field_values.get(f, DEFAULT_CONTRACT_CODE))
             else:
@@ -1103,7 +1103,7 @@ def build_case_rows(test_case: Dict[str, Any],
             field_map =  {
                 'ContractCode':DEFAULT_CONTRACT_CODE,
                 'startTime': times[0],
-                'toStartTime': times[1]
+                'tomStartTime': times[1]
             }
             emit_send("MncCreateSchedule", "MncCreateSchedule", "", "MNC", field_map)
 
