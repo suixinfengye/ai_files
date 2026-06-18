@@ -1,0 +1,597 @@
+TEST_CASE_START
+358305
+TC Symbol
+"Description, SF01-01.08_004 - j-Tag380-BusinessRejectReason"
+"StoryId=OTPML-241,StoryId=/,StoryId=OTPML-1235,ZephyrId=358305"
+Status,ID,PreviousID,step_type,Action,User,protocol,SecurityID,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,BusinessRejectReason,ClOrdID,ContractCode,ExecInst,NoPartyIDs,PartyIDSource,PartyRole,startTime,tomStartTime
+Regular,1,,send,MarketSession,,,,,,,,,,,,ZSDF,,,,,,
+,2,,send,MncCreateSchedule,,MNC,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,3,,send,MassCancel,fix_tricgw101_1,FIX,,,7,,,,,,,ZSDF,,,,,,
+,4,,send,New,fix_tricgw101_1,FIX,,Limit,,Day,0_t1,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",N/E,35,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,0_t1,,0,,,,,,,,
+,5,,send,New,fix_tricgw101_1,FIX,12000,Limit,,Day,1_t2,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,1_t2,,2,,,,,,,,
+,6,,send,New,fix_tricgw101_1,FIX,,Limit,,Day,2_t3,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,2_t3,,3,,,,,,,,
+,7,,send,New,fix_tricgw101_1,FIX,,Limit,,Day,3_t4,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,3_t4,,5,,,,,,,,
+,8,,send,New,fix_tricgw101_1,FIX,,Limit,,Day,4_t5,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,4_t5,,8,,,,,,,,
+,9,,send,New,fix_tricgw101_1,FIX,,Limit,,Day,5_t6,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,5_t6,,9,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+358536
+TC Symbol
+"Description, SF01-02.01_018 - 8-Tag44-Price"
+"StoryId=OTPML-262,StoryId=/,StoryId=OTPML-1250,ZephyrId=358536"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,600,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoLegs,NoPartyIDs,OrdStatus,startTime,tomStartTime
+Regular,11,,send,MarketSession,,,,,,,,,,,,,,,ZSDF,,,,,,,,
+,12,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,ZSDF,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,13,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,ZSDF,,,,,,,,
+,14,,send,Logon,fix_tricgw101_1,FIX,BADF_M3,1,1,"Func(LFC_int(""BADF_M3""))",,,,0_t1_logon,,,,,,,,,,,,,
+,15,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,,3,,,o,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,GetValue(0_t1.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,,0,,
+,16,,send,Logon,fix_tricgw101_1,FIX,,,,,,,,1_t2_logon,,,,,,,,,,,,,
+,17,,send,New,fix_tricgw101_1,FIX,BADF_M3_M4,Buy,1,0,Limit,,Day,1_t2,,BADF_M3,3,,,o,,,2,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,,GetValue(1_t2.New.ClOrdID),,,0,1,,,0,,
+,18,,send,Logon,fix_tricgw101_1,FIX,,,,,,,,2_t3_logon,,,,,,,,,,,,,
+,19,,send,New,fix_tricgw101_1,FIX,BADF_M3_M4,Buy,1,"CalcValue(Func(LFC_int(""BADF_M3"")) - Func(LFC_int(""BADF_M4"")))",Limit,,Day,2_t3,,BADF_M3,3,,,o,,,2,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,,GetValue(2_t3.New.ClOrdID),,,"CalcValue(Func(LFC_int(""BADF_M3"")) - Func(LFC_int(""BADF_M4"")))",1,,,0,,
+TEST_CASE_END
+
+TEST_CASE_START
+531911
+TC Symbol
+"Description, OTPML - 5278 Validation of Fix tags returned in the Drop Copy ER"
+"StoryId=OTPML-5278,StoryId=/,StoryId=OTPML-5278,ZephyrId=531911"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,NoPartyIDs,OrdStatus,PartyRole,SenderCompID,startTime,tomStartTime
+Regular,21,,send,MarketSession,,,,,,,,,,,,,,ZSDF,,,,,,,,
+,22,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,ZSDF,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,23,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,ZSDF,,,,,,,,
+,24,,send,Logon,fix_tricgw101_1,FIX,,,,,,,,0_t1,,,,,,,,,,JPM001,,
+,,,assertion,Logon,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,,,,0,,,,
+,25,,send,Logon,fix_tricgw101_1,FIX,,,,,,,,1_t2,,,,,,,,,,JPMDC01,,
+,,,assertion,Logon,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,,,,,,0,,,,
+,26,,send,New,fix_tricgw101_1,FIX,CADF_M3,Buy,20,"Func(LFC_int(""CADF_M3""))",Limit,,Day,2_t3,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,GetValue(2_t3.New.ClOrdID),,,"Func(LFC_int(""CADF_M3""))",,0,,,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,3_t3,,GetValue(3_t3..ClOrdID),,,"Func(LFC_int(""CADF_M3""))",,,,,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,4_t3,,GetValue(4_t3..ClOrdID),,,"Func(LFC_int(""CADF_M3""))",,,,,,
+,27,,send,Amend,fix_tricgw101_1,FIX,CADF_M3,Buy,20,"Func(LFC_int(""CADF_M3""))",Limit,,Day,5_t6,5_t3,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,301,,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,5_t6,,GetValue(5_t6.Amend.ClOrdID),,,"Func(LFC_int(""CADF_M3""))",,0,,,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,6_t6,,GetValue(6_t6..ClOrdID),,,"Func(LFC_int(""CADF_M3""))",,,,,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,7_t6,,GetValue(7_t6..ClOrdID),,,"Func(LFC_int(""CADF_M3""))",,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+394097
+TC Symbol
+"Description, SF01-01.08_004 - j-Tag380-BusinessRejectReason"
+"StoryId=OTPML-1009,StoryId=/,StoryId=OTPML-1321,ZephyrId=394097"
+Status,ID,PreviousID,step_type,Action,User,protocol,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,BusinessRejectReason,ClOrdID,ContractCode,ExecInst,NoPartyIDs,startTime,tomStartTime
+,31,,send,MassCancel,fix_tricgw101_1,FIX,,7,,,,,,,ZSDF,,,,
+,32,,send,Logon,fix_tricgw101_1,FIX,,,,0_t1_logon,,,,,,,,,
+,33,,send,New,fix_tricgw101_1,FIX,Limit,,Day,0_t1,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,0_t1,,0,,,,,,
+,34,,send,Logon,fix_tricgw101_1,FIX,,,,1_t2_logon,,,,,,,,,
+,35,,send,New,fix_tricgw101_1,FIX,Limit,,Day,1_t2,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,1_t2,,2,,,,,,
+,36,,send,Logon,fix_tricgw101_1,FIX,,,,2_t3_logon,,,,,,,,,
+,37,,send,New,fix_tricgw101_1,FIX,Limit,,Day,2_t3,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,2_t3,,5,,,,,,
+,38,,send,Logon,fix_tricgw101_1,FIX,,,,3_t4_logon,,,,,,,,,
+,39,,send,New,fix_tricgw101_1,FIX,Limit,,Day,3_t4,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,3_t4,,8,,,,,,
+,40,,send,Logon,fix_tricgw101_1,FIX,,,,4_t5_logon,,,,,,,,,
+,41,,send,New,fix_tricgw101_1,FIX,Limit,,Day,4_t5,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,4_t5,,9,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+543140
+TC Symbol
+"Description, ELTBS-1405-022 Verify PartyID (448) length for PartyRole (452) 81 - Broker Client ID"
+"StoryId=ELTBS-1405,StoryId=/,StoryId=ELTBS-1405,ZephyrId=543140"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,1324,1505,1562,1563,1564,1565,1671,1676,1691,1692,1693,AccountType,BeginString,BodyLength,CheckSum,ClOrdID,ContractCode,ExecInst,LastPx,MsgSeqNum,NoPartyIDs,OrdStatus,SenderCompID,SendingTime,TargetCompID,startTime,tomStartTime
+Regular,51,,send,MarketSession,,,,,,,,,,,,,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,52,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,53,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,54,,send,Logon,fix_tricgw101_1,FIX,,,,,,,,0_t1,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,assertion,Logon,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,55,,send,PartyDetailsDefinitionRequest,fix_tricgw101_1,FIX,,,,,,,,1_t2,,A,09944536941000003,1,1,D,38,1,1,ABCDEFGHIJKLMNOP,D,81,,FIXT.1.1,0171,018,,,,,4,,,JPM901,20250409-12:22:59.865135400,RMLME,,
+,,,assertion,PartyDetailsDefinitionRequest,fix_tricgw101_1,FIX,,,,,,,,,1_t2,A,09944536941000003,1,1,D,38,1,1,ABCDEFGHIJKLMNOP,D,81,,FIXT.1.1,0171,018,,,,,4,,,JPM901,20250409-12:22:59.865135400,RMLME,,
+,56,,send,Logon,fix_tricgw101_1,FIX,,,,,,,,2_t3,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,assertion,Logon,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,57,,send,New,fix_tricgw101_1,FIX,,,,,Limit,,Day,3_t4,,,,,,,,,,,,,3,,,,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,3_t4,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,58,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,4_t5,,,,,,,,,,,,,3,,,,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,4_t5,,,,,,,,,,,,,,,,GetValue(4_t5.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",,,0,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+407406
+TC Symbol
+"Description, PCR_027_PartyRole_Tag452=35_001"
+"StoryId=OTPML-,StoryId=/,StoryId=OTPML-,ZephyrId=407406"
+Status,ID,PreviousID,step_type,Action,User,protocol,SecurityID,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,BeginString,BodyLength,CheckSum,ClOrdID,ContractCode,ExecInst,MsgSeqNum,NoPartyIDs,OrderCapacity,OrderRestrictions,PartyID,PartyIDSource,PartyRole,SecurityIDSource,SenderCompID,SendingTime,TargetCompID,TransactTime,startTime,tomStartTime
+Regular,61,,send,MarketSession,,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,,,,
+,62,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,63,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,,,ZSDF,,,,,,,,,,,,,,,
+,64,,send,New,fix_tricgw101_1,FIX,4116,Sell,10,8500,Limit,,Day,0_t1,,3,FIXT.1.1,82,008,146550,,o,2,4,A,D,11,D,11,8,BMT501,20191021-09:38:06.057,LMECO,20181022-09:38:06.057,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,,,,,,,,,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+407407
+TC Symbol
+"Description, PCR_026_PartyRole_Tag452=66_002"
+"StoryId=OTPML-,StoryId=/,StoryId=OTPML-,ZephyrId=407407"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,BeginString,BodyLength,CheckSum,ClOrdID,ContractCode,ExecInst,LastPx,MsgSeqNum,NoPartyIDs,OrdStatus,OrderCapacity,OrderRestrictions,PartyID,PartyIDSource,PartyRole,SecurityIDSource,SenderCompID,SendingTime,TargetCompID,TransactTime,startTime,tomStartTime
+Regular,71,,send,MarketSession,,,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,,,,,,
+,72,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,73,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,,7,,,,,,,,,ZSDF,,,,,,,,,,,,,,,,,
+,74,,send,New,fix_tricgw101_1,FIX,BADF_M3,5088,Sell,10,9038,Limit,,Day,0_t1,,3,FIXT.1.1,82,008,146550,,o,,2,4,,A,D,Y,D,11,8,ADM009,20191021-09:38:06.057,LMECO,20181022-09:38:06.057,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,,0_t1,,,,,GetValue(0_t1.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",,,0,,,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+407408
+TC Symbol
+"Description, PCR_026_PartyRole_Tag452=66_003"
+"StoryId=OTPML-,StoryId=/,StoryId=OTPML-,ZephyrId=407408"
+Status,ID,PreviousID,step_type,Action,User,protocol,SecurityID,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,BeginString,BodyLength,CheckSum,ClOrdID,ContractCode,ExecInst,MsgSeqNum,NoPartyIDs,OrderCapacity,OrderRestrictions,PartyID,PartyIDSource,PartyRole,SecurityIDSource,SenderCompID,SendingTime,TargetCompID,TransactTime,startTime,tomStartTime
+Regular,81,,send,MarketSession,,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,,,,
+,82,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,83,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,,,ZSDF,,,,,,,,,,,,,,,
+,84,,send,New,fix_tricgw101_1,FIX,5088,Sell,10,9038,Limit,,Day,0_t1,,3,FIXT.1.1,82,008,146550,,o,2,4,A,D,N,D,11,8,ADM009,20191021-09:38:06.057,LMECO,20181022-09:38:06.057,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,,,,,,,,,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+407409
+TC Symbol
+"Description, PCR_026_PartyRole_Tag452=66_004"
+"StoryId=OTPML-,StoryId=/,StoryId=OTPML-,ZephyrId=407409"
+Status,ID,PreviousID,step_type,Action,User,protocol,SecurityID,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,BeginString,BodyLength,CheckSum,ClOrdID,ContractCode,ExecInst,MsgSeqNum,NoPartyIDs,OrderCapacity,OrderRestrictions,PartyID,PartyIDSource,PartyRole,SecurityIDSource,SenderCompID,SendingTime,TargetCompID,TransactTime,startTime,tomStartTime
+Regular,91,,send,MarketSession,,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,,,,
+,92,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,93,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,,,ZSDF,,,,,,,,,,,,,,,
+,94,,send,New,fix_tricgw101_1,FIX,5088,Sell,10,9038,Limit,,Day,0_t1,,3,FIXT.1.1,82,008,146550,,o,2,4,A,D,YYY,D,11,8,ADM009,20191021-09:38:06.057,LMECO,20181022-09:38:06.057,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,,,,,,,,,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+438312
+TC Symbol
+"Description, SF01-00.07_020 - d-Tag58-Text=LegPrice out of range"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438312"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,#_id
+Regular,101,,send,MarketSession,,,,
+,102,,send,MncCreateSchedule,,MNC,,
+,103,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,0_t1
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,
+TEST_CASE_END
+
+TEST_CASE_START
+438339
+TC Symbol
+"Description, SF01-00.07_047 - 9-Tag1328-RejectText=Executable order not permitted"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438339"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,startTime,tomStartTime
+Regular,111,,send,MarketSession,,,,,,,,,,,,,,ZSDF,,,,,
+,112,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,113,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,ZSDF,,,,,
+,114,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,115,,send,New,fix_tricgw101_1,FIX,BADF_M3,Sell,1,"CalcValue(Func(LFC_int(""BADF_M3"")) - Func(tick_size(""BADF_M3"")))",Limit,,Day,0_t2,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,116,115,send,Amend,fix_tricgw101_1,FIX,BADF_M3,Sell,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t3,0_t2,3,,,6,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,OrderCancelReject,fix_tricgw101_1,FIX,,,,,,,,,0_t3,,,,,,Executable order not permitted,,
+TEST_CASE_END
+
+TEST_CASE_START
+438347
+TC Symbol
+"Description, SF01-00.07_055 - 9-Tag1328-RejectText=Order Price must be present"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438347"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,#_id,#_previousID,RejectText
+Regular,121,,send,MarketSession,,,,,,,,
+,122,,send,MncCreateSchedule,,MNC,,,,,,
+,123,,send,Amend,fix_tricgw101_1,FIX,BADF_M3,Buy,1,0_t1,,
+,,,assertion,OrderCancelReject,fix_tricgw101_1,FIX,,,,,0_t1,Order Price must be present
+TEST_CASE_END
+
+TEST_CASE_START
+438348
+TC Symbol
+"Description, SF01-00.07_056 - 9-Tag1328-RejectText=Invalid Order Price (must be more than 0)"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438348"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,startTime,tomStartTime
+Regular,131,,send,MarketSession,,,,,,,,,,,,,,ZSDF,,,,,
+,132,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,133,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,ZSDF,,,,,
+,134,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,135,134,send,Amend,fix_tricgw101_1,FIX,BADF_M3,Buy,1,0,Limit,,Day,0_t1a,0_t1,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,OrderCancelReject,fix_tricgw101_1,FIX,,,,,,,,,0_t1a,,,,,,Invalid Order Price (must be more than 0),,
+TEST_CASE_END
+
+TEST_CASE_START
+438358
+TC Symbol
+"Description, SF01-00.07_066 - 9-Tag1328-RejectText=StopPx must not be present"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438358"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,StopPx,startTime,tomStartTime
+Regular,141,,send,MarketSession,,,,,,,,,,,,,,ZSDF,,,,,,
+,142,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,143,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,ZSDF,,,,,,
+,144,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,CalcValue(-110),Limit,,Day,,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,
+,145,,send,Amend,fix_tricgw101_1,FIX,BADF_M3,Buy,1,,StopLimit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,"Func(LFC_int(""BADF_M3""))",,
+,,,assertion,OrderCancelReject,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,,,StopPx must not be present,,,
+TEST_CASE_END
+
+TEST_CASE_START
+438369
+TC Symbol
+"Description, SF01-00.07_077 - 9-Tag1328-RejectText=Order price must be greater than stop price"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438369"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,StopPx,startTime,tomStartTime
+Regular,151,,send,MarketSession,,,,,,,,,,,,,,ZSDF,,,,,,
+,152,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,153,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,ZSDF,,,,,,
+,154,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"CalcValue(Func(LFC_int(""BADF_M3""))-110)",Limit,,Day,,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,
+,155,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",StopLimit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,"Func(LFC_int(""BADF_M3""))",,
+,156,155,send,Amend,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1a,0_t1,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,"CalcValue(Func(LFC_int(""BADF_M3"")) + Func(tick_size(""BADF_M3"")))",,
+,,,assertion,OrderCancelReject,fix_tricgw101_1,FIX,,,,,,,,,0_t1a,,,,,,Order price must be greater than stop price,,,
+TEST_CASE_END
+
+TEST_CASE_START
+438387
+TC Symbol
+"Description, SF01-00.07_095 - 9-Tag1328-RejectText=Invalid price (static price band breached)"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438387"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,startTime,tomStartTime
+Regular,161,,send,MarketSession,,,,,,,,,,,,,,ZSDF,,,,,
+,162,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,163,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,ZSDF,,,,,
+,164,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,165,164,send,Amend,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"CalcValue(Func(LFC_int(""BADF_M3"")) + 100*Func(tick_size(""BADF_M3"")))",Limit,,Day,0_t1a,0_t1,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,OrderCancelReject,fix_tricgw101_1,FIX,,,,,,,,,0_t1a,,,,,,Invalid price (static price band breached),,
+TEST_CASE_END
+
+TEST_CASE_START
+438423
+TC Symbol
+"Description, SF01-00.07_125 - 8-Tag1328-RejectText=Order Price must not be present"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438423"
+Status,ID,PreviousID,step_type,Action,User,protocol,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,startTime,tomStartTime
+,171,,send,MassCancel,fix_tricgw101_1,FIX,,7,,,,,,ZSDF,,,,,
+,172,,send,New,fix_tricgw101_1,FIX,K,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,0_t1,,,,,,Order,,
+TEST_CASE_END
+
+TEST_CASE_START
+438424
+TC Symbol
+"Description, SF01-00.07_126 - 8-Tag1328-RejectText=Invalid Order Price (must be more than 0)"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438424"
+Status,ID,PreviousID,step_type,Action,User,protocol,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,startTime,tomStartTime
+,181,,send,MassCancel,fix_tricgw101_1,FIX,,7,,,,,,ZSDF,,,,,
+,182,,send,New,fix_tricgw101_1,FIX,Limit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,0_t1,,,,,,Invalid,,
+TEST_CASE_END
+
+TEST_CASE_START
+438453
+TC Symbol
+"Description, SF01-00.07_155 - 8-Tag1328-RejectText=StopPx must not be present"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438453"
+Status,ID,PreviousID,step_type,Action,User,protocol,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,startTime,tomStartTime
+,191,,send,MassCancel,fix_tricgw101_1,FIX,,7,,,,,,ZSDF,,,,,
+,192,,send,New,fix_tricgw101_1,FIX,Limit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,0_t1,,,,,,StopPx,,
+TEST_CASE_END
+
+TEST_CASE_START
+438454
+TC Symbol
+"Description, SF01-00.07_156 - 8-Tag1328-RejectText=Stop price must be greater than 0"
+"StoryId=OTPML-232,StoryId=/,StoryId=OTPML-1227,ZephyrId=438454"
+Status,ID,PreviousID,step_type,Action,User,protocol,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,RejectText,startTime,tomStartTime
+,201,,send,MassCancel,fix_tricgw101_1,FIX,,7,,,,,,ZSDF,,,,,
+,202,,send,New,fix_tricgw101_1,FIX,Limit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,0_t1,,,,,,Stop,,
+TEST_CASE_END
+
+TEST_CASE_START
+541728
+TC Symbol
+"Description, ELTBS-1156_001 Validate the rejection message when an incoming order has invalid PartyID length for partyrole = 3"
+"StoryId=ELTBS-1156,StoryId=/,StoryId=ELTBS-1156,ZephyrId=541728"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,PartyIDSource,PartyRole,startTime,tomStartTime
+,211,,send,MassCancel,fix_tricgw101_1,FIX,,,,,7,,,,,,ZSDF,,,,,,
+,212,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,Limit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",N,3,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,0_t1,,,,,,,,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,1_t2,,,,,,,,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,,,1_t2,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+541729
+TC Symbol
+"Description, ELTBS-1156_002 Validate the rejection message when an order is amended with invalid PartyID length for partyrole = 3"
+"StoryId=ELTBS-1156,StoryId=/,StoryId=ELTBS-1156,ZephyrId=541729"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,NoPartyIDs,PartyIDSource,PartyRole,startTime,tomStartTime
+,221,,send,MassCancel,fix_tricgw101_1,FIX,,,,,7,,,,,,ZSDF,,,,,,
+,222,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,Limit,,Day,0_t1,,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",N,3,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,0_t1,,,,,,,,,
+,223,,send,Amend,fix_tricgw101_1,FIX,BADF_M3,Buy,1,Limit,,Day,1_t2,1_t1,3,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",N,3,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,1_t2,,,,,,,,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,2_t3,,,,,,,,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,,,2_t3,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+404815
+TC Symbol
+"Description, S01.04.02a-001 - Intraday Security Definition Request for multi leg Strategy of 4 legs"
+"StoryId=OTPML-13,StoryId=/,StoryId=OTPML-1423,ZephyrId=404815"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,#_id,#_previousID,322,LegRatioQty,LegSecurityID,LegSide,NoLegs,SecurityIDSource,SecurityReqID,SecurityRequestType,SecurityResponseType,SecuritySubType,SecurityType
+Regular,231,,send,MarketSession,,,,,,,,,,,,,,,,,
+,232,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,
+,233,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,CA,,0_t1,,,2,4321,1,4,,12345,1,,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,CA,,,0_t1,,2,4321,1,4,,12345,1,,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,4,,,XXX,,,,,8,12345,,1,,
+TEST_CASE_END
+
+TEST_CASE_START
+404816
+TC Symbol
+"Description, S01.04.02a-002 - Intraday Security Definition Request existing multi leg Strategy of 4 legs"
+"StoryId=OTPML-13,StoryId=/,StoryId=OTPML-1423,ZephyrId=404816"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,#_id,#_previousID,322,LegRatioQty,LegSecurityID,LegSide,NoLegs,SecurityIDSource,SecurityReqID,SecurityRequestType,SecurityResponseType,SecuritySubType,SecurityType
+Regular,241,,send,MarketSession,,,,,,,,,,,,,,,,,
+,242,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,
+,243,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,CA,,0_t1,,,2,4321,1,4,,12345,1,,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,CA,,,0_t1,,2,4321,1,4,,12345,1,,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,4,,,XXX,,,,,8,12345,,1,,
+TEST_CASE_END
+
+TEST_CASE_START
+404817
+TC Symbol
+"Description, S01.04.02a-003 - Intraday Security Definition Request for 2 leg Strategy with  two buy of 1 ratio each"
+"StoryId=OTPML-13,StoryId=/,StoryId=OTPML-1423,ZephyrId=404817"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,#_id
+Regular,251,,send,MarketSession,,,,
+,252,,send,MncCreateSchedule,,MNC,,
+,253,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,0_t1
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,
+,254,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,1_t2
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,
+,255,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,2_t3
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,
+,256,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,3_t4
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,
+TEST_CASE_END
+
+TEST_CASE_START
+404818
+TC Symbol
+"Description, S01.04.02a-004 - Intraday Security Definition Request for multi leg Strategy of 3 legs"
+"StoryId=OTPML-13,StoryId=/,StoryId=OTPML-1423,ZephyrId=404818"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,#_id,#_previousID,322,LegRatioQty,LegSecurityID,LegSide,NoLegs,SecurityIDSource,SecurityReqID,SecurityRequestType,SecurityResponseType,SecuritySubType,SecurityType
+Regular,261,,send,MarketSession,,,,,,,,,,,,,,,,,
+,262,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,
+,263,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,CA,,0_t1,,,2,4321,1,3,,12345,1,,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,CA,,,0_t1,,2,4321,1,3,,12345,1,,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,4,,,XXX,,,,,8,12345,,1,,
+TEST_CASE_END
+
+TEST_CASE_START
+404819
+TC Symbol
+"Description, S01.04.02a-005 - Intraday Security Definition Request existing multi leg Strategy of 3 legs"
+"StoryId=OTPML-13,StoryId=/,StoryId=OTPML-1423,ZephyrId=404819"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,#_id,#_previousID,LegRatioQty,LegSecurityID,LegSide,NoLegs,SecurityReqID,SecurityRequestType,SecuritySubType,SecurityType
+Regular,271,,send,MarketSession,,,,,,,,,,,,,
+,272,,send,MncCreateSchedule,,MNC,,,,,,,,,,,
+,273,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,CA,0_t1,,2,4321,1,3,12345,1,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,CA,,0_t1,2,4321,1,3,12345,1,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,,,,,,,,,,
+,274,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,,2_t3,,,,,,,,,
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,,2_t3,,,,,,,,
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+404820
+TC Symbol
+"Description, S01.04.02a-006 - Make Security definition requetst with same SecurityReqID(tag320) and confirmed duplicate RequestId reject response received"
+"StoryId=OTPML-13,StoryId=/,StoryId=OTPML-1423,ZephyrId=404820"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,#_id,#_previousID
+,,,assertion,Reject,fix_tricgw101_1,FIX,,0_t1,
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,,
+,281,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,1_t2,
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,2_t3,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,2_t3
+TEST_CASE_END
+
+TEST_CASE_START
+404821
+TC Symbol
+"Description, S01.04.02a-007 - Make Security definition requetst with incorrect NumInGroup (tag555) and confirm request rejected"
+"StoryId=OTPML-13,StoryId=/,StoryId=OTPML-1423,ZephyrId=404821"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,#_previousID,LegRatioQty,LegSecurityID,LegSide,NoLegs,SecurityReqID,SecurityRequestType,SecuritySubType,SecurityType
+Regular,291,,send,MarketSession,,,,,,,,,,,,
+,292,,send,MncCreateSchedule,,MNC,,,,,,,,,,
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,CA,0_t1,2,4321,1,4,12345,1,1,MLEG
+,,,assertion,SecurityDefinition,fix_tricgw101_1,FIX,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+358630
+TC Symbol
+"Description, SF01-01.11_011 - D-Tag44-Price"
+"StoryId=OTPML-244,StoryId=/,StoryId=OTPML-1238,ZephyrId=358630"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,600,AccountType,BusinessRejectReason,BusinessRejectRefID,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoLegs,NoPartyIDs,OrdStatus,startTime,tomStartTime
+Regular,301,,send,MarketSession,,,,,,,,,,,,,,,,,ZSDF,,,,,,,,
+,302,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,,ZSDF,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,303,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,,,ZSDF,,,,,,,,
+,304,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,,3,,,,,o,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,,GetValue(0_t1.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,,0,,
+,305,,send,New,fix_tricgw101_1,FIX,BADF_M3_M4,Buy,1,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",Limit,,Day,1_t2,,BADF_M3,3,,,,,o,,,2,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,,,,GetValue(1_t2.New.ClOrdID),,,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",1,,,0,,
+,306,,send,New,fix_tricgw101_1,FIX,BADF_M3_M4,Buy,1,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",Limit,,Day,2_t3,,BADF_M3,3,,,,,o,,,2,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,,,,GetValue(2_t3.New.ClOrdID),,,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",1,,,0,,
+,307,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,,,,,,,3_t4,,,,,,,,,,,,,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,,,,3_t4,,,5,11,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+358634
+TC Symbol
+"Description, SF01-01.11_015 - D-Tag1107-TriggerPriceType"
+"StoryId=OTPML-244,StoryId=/,StoryId=OTPML-1238,ZephyrId=358634"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,BusinessRejectReason,BusinessRejectRefID,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,OrdStatus,TriggerPriceType,startTime,tomStartTime
+Regular,311,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,
+,312,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,313,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,,ZSDF,,,,,,,,
+,314,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,3,,,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,2,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,GetValue(0_t1.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,0,2,,
+,315,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,1_t2,,3,,,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,4,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,,,GetValue(1_t2.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,0,4,,
+,316,,send,New,fix_tricgw101_1,FIX,BADF_M3,Sell,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,2_t3,,3,,,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,5,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,,,GetValue(2_t3.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,0,5,,
+,317,,send,New,fix_tricgw101_1,FIX,,,,,Limit,,Day,3_t4,,3,,,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,10,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,3_t4,,,,,,,,,,,,,
+,318,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,,,,,,,4_t5,,,,,,,,,,,,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,,,,4_t5,,5,11,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+358635
+TC Symbol
+"Description, SF01-01.11_016 - D-Tag1110-TriggerNewPrice"
+"StoryId=OTPML-244,StoryId=/,StoryId=OTPML-1238,ZephyrId=358635"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,BusinessRejectReason,BusinessRejectRefID,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,OrdStatus,startTime,tomStartTime
+Regular,321,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,
+,322,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,323,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,,ZSDF,,,,,,,
+,324,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,3,,,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,GetValue(0_t1.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,0,,
+,325,,send,SecurityDefinitionRequest,fix_tricgw101_1,FIX,ZSDF,,,,,,,1_t2,,,,,,,,,,,,,
+,,,assertion,BusinessMessageReject,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,5,11,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+358657
+TC Symbol
+"Description, SF01-01.12_012 - G-Tag44-Price"
+"StoryId=OTPML-245,StoryId=/,StoryId=OTPML-1239,ZephyrId=358657"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,600,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoLegs,NoPartyIDs,OrdStatus,startTime,tomStartTime
+Regular,331,,send,MarketSession,,,,,,,,,,,,,,,ZSDF,,,,,,,,
+,332,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,ZSDF,,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,333,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,ZSDF,,,,,,,,
+,334,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,,3,,,o,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,GetValue(0_t1.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,,0,,
+,335,,send,Amend,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,1_t2,,,3,,,o,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,,GetValue(1_t2.Amend.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,,0,,
+,336,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,2_t3,,,3,,,o,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,,GetValue(2_t3.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,,0,,
+,337,,send,Amend,fix_tricgw101_1,FIX,,,,,Limit,,Day,3_t4,,,3,,,o,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,3_t4,,,,,,,,,,,,
+,338,,send,Amend,fix_tricgw101_1,FIX,BADF_M3_M4,Buy,1,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",Limit,,Day,4_t5,,BADF_M3,3,,,o,,,2,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,4_t5,,,GetValue(4_t5.Amend.ClOrdID),,,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",1,,,0,,
+,339,,send,Amend,fix_tricgw101_1,FIX,BADF_M3_M4,Buy,1,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",Limit,,Day,5_t6,,BADF_M3,3,,,o,,,2,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,5_t6,,,GetValue(5_t6.Amend.ClOrdID),,,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",1,,,0,,
+TEST_CASE_END
+
+TEST_CASE_START
+358704
+TC Symbol
+"Description, SF01-01.20_004 - 9-Tag39-OrdStatus"
+"StoryId=OTPML-253,StoryId=/,StoryId=OTPML-1244,ZephyrId=358704"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,OrdStatus,startTime,tomStartTime
+Regular,341,,send,MarketSession,,,,,,,,,,,,,,ZSDF,,,,,,,
+,342,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,ZSDF,,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,343,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,ZSDF,,,,,,,
+,344,,send,Amend,fix_tricgw101_1,FIX,,,,,Limit,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,,,,,,,,
+,345,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,1_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,GetValue(1_t2.New.ClOrdID),,,0,0,,2,,
+,346,,send,New,fix_tricgw101_1,FIX,BADF_M3,Sell,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,2_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,GetValue(2_t3.New.ClOrdID),,,0,0,,2,,
+,347,,send,Cancel,fix_tricgw101_1,FIX,,,,,,,,3_t4,3_t3,,,,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,3_t4,,,,,,,,,,
+,348,,send,Cancel,fix_tricgw101_1,FIX,,,,,,,,4_t5,4_t3,,,,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,4_t5,,,,,,,,,,
+,349,,send,New,fix_tricgw101_1,FIX,,,,,Limit,,Day,5_t6,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,,,,,5_t6,,,,,,,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+358706
+TC Symbol
+"Description, SF01-01.20_006 - 9-Tag102-CxlRejReason"
+"StoryId=OTPML-253,StoryId=/,StoryId=OTPML-1244,ZephyrId=358706"
+Status,ID,PreviousID,step_type,Action,User,protocol,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,CxlRejReason,ExecInst,NoPartyIDs,startTime,tomStartTime
+Regular,351,,send,MarketSession,,,,,,,,,,ZSDF,,,,,
+,352,,send,MncCreateSchedule,,MNC,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00
+,353,,send,MassCancel,fix_tricgw101_1,FIX,,7,,,,,,ZSDF,,,,,
+,354,,send,Cancel,fix_tricgw101_1,FIX,,,,0_t1,,,,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,0_t1,,,,0,,,,
+,355,,send,Cancel,fix_tricgw101_1,FIX,,,,1_t2,,,,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,1_t2,,,,1,,,,
+,356,,send,New,fix_tricgw101_1,FIX,Limit,,Day,2_t3,,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,2_t3,,,,3,,,,
+,357,,send,Amend,fix_tricgw101_1,FIX,Limit,,Day,3_t4,3_t3,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,3_t4,,,,18,,,,
+,358,,send,Amend,fix_tricgw101_1,FIX,Limit,,Day,4_t5,4_t3,3,,,,o,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}]",,
+,,,assertion,Reject,fix_tricgw101_1,FIX,,,,,4_t5,,,,99,,,,
+TEST_CASE_END
+
+TEST_CASE_START
+358716
+TC Symbol
+"Description, SF01-01.21_009 - 8-Tag103-OrdRejReason"
+"StoryId=OTPML-254,StoryId=/,StoryId=OTPML-1245,ZephyrId=358716"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,103,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,OrdStatus,startTime,tomStartTime
+,361,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,ZSDF,,,,,,,
+,362,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,0_t1,15,,GetValue(0_t1.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,0,,
+,363,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,1_t2,,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,1_t2,18,,GetValue(1_t2.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,0,,
+,364,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,2_t3,,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,99,,GetValue(2_t3.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,0,,
+TEST_CASE_END
+
+TEST_CASE_START
+358724
+TC Symbol
+"Description, SF01-01.21_018 - 8-Tag44-Price"
+"StoryId=OTPML-254,StoryId=/,StoryId=OTPML-1245,ZephyrId=358724"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,600,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoLegs,NoPartyIDs,OrdStatus,startTime,tomStartTime
+,371,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,,ZSDF,,,,,,,,
+,372,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,,3,,,o,,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,,GetValue(0_t1.New.ClOrdID),,,"Func(LFC_int(""BADF_M3""))",1,,,0,,
+,373,,send,New,fix_tricgw101_1,FIX,BADF_M3_M4,Buy,1,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",Limit,,Day,1_t2,,BADF_M3,3,,,o,,,2,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,,GetValue(1_t2.New.ClOrdID),,,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",1,,,0,,
+,374,,send,New,fix_tricgw101_1,FIX,BADF_M3_M4,Buy,1,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",Limit,,Day,2_t3,,BADF_M3,3,,,o,,,2,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,,GetValue(2_t3.New.ClOrdID),,,"CalcValue(Func(LFC_int(""BADF_M4"")) - Func(LFC_int(""BADF_M3"")))",1,,,0,,
+TEST_CASE_END
+
+TEST_CASE_START
+358728
+TC Symbol
+"Description, SF01-01.21_022 - 8-Tag1107-TriggerPriceType"
+"StoryId=OTPML-254,StoryId=/,StoryId=OTPML-1245,ZephyrId=358728"
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,OrdStatus,TriggerPriceType,startTime,tomStartTime
+,381,,send,MassCancel,fix_tricgw101_1,FIX,,,,,,7,,,,,,ZSDF,,,,,,,,
+,382,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,2,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,0_t1,,GetValue(0_t1.New.ClOrdID),,,0,0,,2,2,,
+,383,,send,New,fix_tricgw101_1,FIX,BADF_M3,Buy,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,1_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,4,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,1_t2,,GetValue(1_t2.New.ClOrdID),,,0,0,,2,4,,
+,384,,send,New,fix_tricgw101_1,FIX,BADF_M3,Sell,1,"Func(LFC_int(""BADF_M3""))",Limit,,Day,2_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,5,,
+,,,assertion,ExecutionReport,fix_tricgw101_1,FIX,,,,,,,,,2_t3,,GetValue(2_t3.New.ClOrdID),,,0,0,,2,5,,
+TEST_CASE_END
+
