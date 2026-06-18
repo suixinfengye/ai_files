@@ -1,6 +1,7 @@
 TEST_CASE_START
 358327
-TC Symbol
+TC Symbolapi_automatable_needs_action_support.jsonl
+api_automatable_valid.jsonl
 "Description, SF01-00.06_021 - Tag452-PartyRole=302 Amendabl"
 "StoryId=OTPML-231,StoryId=/,StoryId=OTPML-1226,ZephyrId=358327"
 Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,Side,OrderQty,Price,OrderType,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,OrdStatus,PartyRole,startTime,tomStartTime
