@@ -1,0 +1,1395 @@
+TEST_CASE_START
+398924
+TC Symbol
+"Description, SB01-Implied - IN"
+ZephyrId=398924
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,1,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,2,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,3,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,4,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 10 at 2501.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,5,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Sell,10,"Func(LFC_int(""ZSDF_M2""))",Limit,t2 M2 sell 10 at 2500.0,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,6,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,1,"CalcValue(1*Func(tick_size(""ZSDF_M1_2"")))",Limit,t3 M1/2 sell 1 at 1.0,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1_2,2,,,,,,,,0_t3,,,,,,,,,,,,"CalcValue(1*Func(tick_size(""ZSDF_M1_2"")))",1,,
+TEST_CASE_END
+
+TEST_CASE_START
+398925
+TC Symbol
+"Description, SB01- Implied - OUT"
+ZephyrId=398925
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,11,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,12,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,13,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,14,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 10 at 2510.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,15,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,0,Limit,t2 M1/2 sell 10 at 0.00,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,16,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Sell,10,"Func(LFC_int(""ZSDF_M2""))",Limit,t3 M2 sell 10 at 2510.0,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t3,,,,,,,,,,,,"Func(LFC_int(""ZSDF_M2""))",10,,
+TEST_CASE_END
+
+TEST_CASE_START
+398926
+TC Symbol
+"Description, SB01- Implied- Side effect"
+ZephyrId=398926
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,21,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,22,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,23,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,24,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 10 at 2510.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,25,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,0,Limit,t2 M1/2 sell 10 at 0.00,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,26,,send,New,bin_tripsg101_1,BIN,ZSDF_M2_3,,Sell,10,0,Limit,t3 M2/3 sell 10 at 0.0,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,27,,send,New,bin_tripsg101_1,BIN,ZSDF_M3,,Sell,10,"Func(LFC_int(""ZSDF_M3""))",Limit,t4 M3 sell 10 at 2510.0,,Day,0_t4,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t3,,,,,,,,,,,,"Func(LFC_int(""ZSDF_M2""))",10,,
+TEST_CASE_END
+
+TEST_CASE_START
+398927
+TC Symbol
+"Description, SB01- Implied- Price Priority"
+ZephyrId=398927
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,31,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,32,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,33,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,34,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 10 at 2510.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,35,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Buy,10,"Func(LFC_int(""ZSDF_M2""))",Limit,t2 M2 buy 10 at 2508.0,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,36,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,"CalcValue(1*Func(tick_size(""ZSDF_M1_2"")))",Limit,t3 M1/2 sell 10 at 1.00,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,37,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Sell,10,"CalcValue(Func(LFC_int(""ZSDF_M2"")) - 14*Func(tick_size(""ZSDF_M2"")))",Limit,t4 M2 sell 10 at 2501.0,,Day,0_t4,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t4,,,,,,,,,,,,"CalcValue(Func(LFC_int(""ZSDF_M2"")) + 2*Func(tick_size(""ZSDF_M2"")))",10,,
+TEST_CASE_END
+
+TEST_CASE_START
+398928
+TC Symbol
+"Description, SB01- Implied-Time Priority"
+ZephyrId=398928
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,41,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,42,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,43,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,44,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 10 at 2510.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,45,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,0,Limit,t2 M1/2 sell 10 at 0.00,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,46,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Buy,10,"Func(LFC_int(""ZSDF_M2""))",Limit,t3 M2 buy 10 at 2510.0,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,47,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Sell,10,"Func(LFC_int(""ZSDF_M2""))",Limit,t4 M2 sell 10 at 2510.0,,Day,0_t4,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t4,,,,,,,,,,,,"Func(LFC_int(""ZSDF_M2""))",10,,
+TEST_CASE_END
+
+TEST_CASE_START
+398929
+TC Symbol
+"Description, SB01- Implied-Eligible & Dispayed Vol"
+ZephyrId=398929
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,51,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,52,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,53,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,54,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 10 at 2510.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,55,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,0,Limit,t2 M1/2 sell 10 at 0.00,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,56,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_3,,Sell,10,0,Limit,t3 M1/3 sell 10 at 0.00,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,57,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Sell,5,"Func(LFC_int(""ZSDF_M2""))",Limit,t4 M2 sell 5 at 2510.0,,Day,0_t4,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t4,,,,,,,,,,,,"Func(LFC_int(""ZSDF_M2""))",5,,
+TEST_CASE_END
+
+TEST_CASE_START
+398930
+TC Symbol
+"Description, SB01- Implied-Implied Eligible price"
+ZephyrId=398930
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,61,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,62,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,63,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,64,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,20,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 20 at 2510.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,65,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,"CalcValue(1*Func(tick_size(""ZSDF_M1_2"")))",Limit,t2 M1/2 sell 10 at 1.00,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,66,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,0,Limit,t3 M1/2 sell 10 at 0.00,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,67,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Sell,10,"Func(LFC_int(""ZSDF_M2""))",Limit,t4 M2 sell 10 at 2510.0,,Day,0_t4,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t4,,,,,,,,,,,,"Func(LFC_int(""ZSDF_M2""))",10,,
+TEST_CASE_END
+
+TEST_CASE_START
+398931
+TC Symbol
+"Description, SB01- Implied-VTS trading and Rounding"
+ZephyrId=398931
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,71,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,72,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,73,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,74,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 10 at 2501.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,75,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,"CalcValue(0.1*Func(tick_size(""ZSDF_M1_2"")))",Limit,t2 M1/2 sell 10 at 0.1,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,76,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Sell,10,"Func(LFC_int(""ZSDF_M2""))",Limit,t3 M2 sell 10 at 2500.5,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t3,,,,,,,,,,,,"Func(LFC_int(""ZSDF_M2""))",10,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t3,,,,,,,,,,,,"Func(LFC_int(""ZSDF_M2""))",10,,
+TEST_CASE_END
+
+TEST_CASE_START
+398932
+TC Symbol
+"Description, SB01- Implied-Price Improvement"
+ZephyrId=398932
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastPx,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastPrice,LastQuantity,OrderPrice,OrderQuantity
+Regular,81,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,,,
+,82,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,,
+,83,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,,,
+,84,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,t1 M1 buy 10 at 2501.0,,Day,0_t1,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,85,,send,New,bin_tripsg101_1,BIN,ZSDF_M1_2,,Sell,10,"CalcValue(0.1*Func(tick_size(""ZSDF_M1_2"")))",Limit,t2 M1/2 sell 10 at 0.1,,Day,0_t2,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,86,,send,New,bin_tripsg101_1,BIN,ZSDF_M2,,Sell,10,"Func(LFC_int(""ZSDF_M2""))",Limit,t3 M2 sell 10 at 2500.5,,Day,0_t3,,3,,,o,,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M2,2,,,,,,,,0_t3,,,,,,,,,,,,"Func(LFC_int(""ZSDF_M2""))",10,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1_2,2,,,,,,,,0_t2,,,,,,,,,,,,"CalcValue(0.5*Func(tick_size(""ZSDF_M1_2"")))",10,,
+TEST_CASE_END
+
+TEST_CASE_START
+398933
+TC Symbol
+"Description, SB01- Implied-_Iceberg"
+ZephyrId=398933
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395017
+TC Symbol
+"Description, SB01-03.01_Security Identification_001"
+ZephyrId=395017
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,1,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,2,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,3,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,4,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395018
+TC Symbol
+"Description, SB01-03.01_Security Identification_002"
+ZephyrId=395018
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,11,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,12,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,13,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,14,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395019
+TC Symbol
+"Description, SB01-03.02_Strategies_001"
+ZephyrId=395019
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,21,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,22,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,23,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,24,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395020
+TC Symbol
+"Description, SB01-03.02_Strategies_002"
+ZephyrId=395020
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,31,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,32,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,33,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,34,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395021
+TC Symbol
+"Description, SB01-03.02.01.01_Future/Options Strategies_001"
+ZephyrId=395021
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,41,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,42,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,43,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,44,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395022
+TC Symbol
+"Description, SB01-03.3_Order Submission_Outright_001"
+ZephyrId=395022
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,51,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,52,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,53,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,54,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395023
+TC Symbol
+"Description, SB01-03.3_Order Submission_Opt_002"
+ZephyrId=395023
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,61,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,62,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,63,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,64,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395024
+TC Symbol
+"Description, SB01-03.3_Order Submission_strategy_003"
+ZephyrId=395024
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395025
+TC Symbol
+"Description, SB01-03.3_Order Submission_MassQuote_004"
+ZephyrId=395025
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,71,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,72,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,73,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,74,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395026
+TC Symbol
+"Description, SB01-03.4.1_Order Types_Limit_001"
+ZephyrId=395026
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,81,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,82,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,83,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,84,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395027
+TC Symbol
+"Description, SB01-03.4.1_Order Types_Stop Loss_002"
+ZephyrId=395027
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,91,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,92,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,93,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,94,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395028
+TC Symbol
+"Description, SB01-03.4.1_Order Types_Stop Limit_003_1"
+ZephyrId=395028
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,101,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,102,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,103,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,104,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395029
+TC Symbol
+"Description, SB01-03.4.1_Order Types_Market to Limit_003_2"
+ZephyrId=395029
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,111,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,112,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,113,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,114,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395030
+TC Symbol
+"Description, SB01-03.4.1_Order Types_Iceberg_003_3"
+ZephyrId=395030
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395031
+TC Symbol
+"Description, SB01-03.4.1_Order Types_Post Only_003_4"
+ZephyrId=395031
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395032
+TC Symbol
+"Description, SB01-03.4.1_Order Types_One Cancels Other_003_5"
+ZephyrId=395032
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395033
+TC Symbol
+"Description, SB01-03.4.1_Order Types_OCO_003_6"
+ZephyrId=395033
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395034
+TC Symbol
+"Description, SB01-03.4.2_Order Validity Conditions_Day_001_1"
+ZephyrId=395034
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,121,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,122,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,123,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,124,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395035
+TC Symbol
+"Description, SB01-03.4.2_Order Validity Conditions_IOC_001_2"
+ZephyrId=395035
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,131,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,132,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,133,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,134,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395036
+TC Symbol
+"Description, SB01-03.4.2_Order Validity Conditions_GTC_001_3"
+ZephyrId=395036
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,141,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,142,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,143,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,144,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395037
+TC Symbol
+"Description, SB01-03.4.2_Order Validity Conditions_FOK_001_4"
+ZephyrId=395037
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,151,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,152,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,153,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,154,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395038
+TC Symbol
+"Description, SB01-03.4.2_Order Validity Conditions_GTD_001_5"
+ZephyrId=395038
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,161,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,162,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,163,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,164,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395039
+TC Symbol
+"Description, SB01-03.4.3_Order Types and Permitted Order Validity Conditions_001_1"
+ZephyrId=395039
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,171,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,172,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,173,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,174,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395040
+TC Symbol
+"Description, SB01-03.4.3_Order Types and Permitted Order Validity Conditions_001_2"
+ZephyrId=395040
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,181,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,182,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,183,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,184,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395041
+TC Symbol
+"Description, SB01-03.4.3_Order Types and Permitted Order Validity Conditions_001_3"
+ZephyrId=395041
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,191,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,192,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,193,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,194,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395042
+TC Symbol
+"Description, SB01-03.4.3_Order Types and Permitted Order Validity Conditions_SL_001_4"
+ZephyrId=395042
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,201,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,202,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,203,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,204,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395043
+TC Symbol
+"Description, SB01-03.4.3_Order Types and Permitted Order Validity Conditions_Ice_001_5"
+ZephyrId=395043
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,211,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,212,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,213,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,214,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395044
+TC Symbol
+"Description, SB01-03.4.3_Order Types and Permitted Order Validity Conditions+Post_001_6"
+ZephyrId=395044
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,221,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,222,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,223,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,224,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395045
+TC Symbol
+"Description, SB01-03.4.3_Order Types and Permitted Order Validity Conditions_OCT_001_7"
+ZephyrId=395045
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,231,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,232,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,233,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,234,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395046
+TC Symbol
+"Description, SB01-03.4.3_Order Types and Permitted Order Validity Conditions_OCTL_001_8"
+ZephyrId=395046
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,241,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,242,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,243,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,244,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395047
+TC Symbol
+"Description, SB01-03.5_Order Identification_001"
+ZephyrId=395047
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,251,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,252,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,253,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,254,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395048
+TC Symbol
+"Description, SB01-03.5_Order Identification_002"
+ZephyrId=395048
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,261,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,262,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,263,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,264,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395049
+TC Symbol
+"Description, SB01-03.5_Order Identification_003"
+ZephyrId=395049
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,271,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,272,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,273,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,274,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395050
+TC Symbol
+"Description, SB01-03.5_Order Identification_004"
+ZephyrId=395050
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,281,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,282,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,283,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,284,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395051
+TC Symbol
+"Description, SB01-03.5_Order Identification_005"
+ZephyrId=395051
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,291,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,292,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,293,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,294,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395052
+TC Symbol
+"Description, SB01-03.06_Order Expiry_001"
+ZephyrId=395052
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,301,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,302,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,303,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,304,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395053
+TC Symbol
+"Description, SB01-03.06_Order Expiry_002"
+ZephyrId=395053
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,311,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,312,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,313,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,314,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395054
+TC Symbol
+"Description, SB01-03.06_Order Expiry_003"
+ZephyrId=395054
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,321,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,322,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,323,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,324,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395055
+TC Symbol
+"Description, SB01-03.06_Order Expiry_004"
+ZephyrId=395055
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,331,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,332,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,333,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,334,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395056
+TC Symbol
+"Description, SB01-03.7_Order Restatement_001"
+ZephyrId=395056
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,341,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,342,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,343,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,344,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395057
+TC Symbol
+"Description, SB01-03.7_Order Restatement_002"
+ZephyrId=395057
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,351,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,352,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,353,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,354,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395060
+TC Symbol
+"Description, SB01-03.08_Order Amendment_003"
+ZephyrId=395060
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,361,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,362,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,363,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,364,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395061
+TC Symbol
+"Description, SB01-03.08_Order Amendment_004"
+ZephyrId=395061
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,371,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,372,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,373,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,374,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395062
+TC Symbol
+"Description, SB01-03.08_Order Amendment_005"
+ZephyrId=395062
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,381,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,382,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,383,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,384,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395063
+TC Symbol
+"Description, SB01-03.08_Order Amendment_006"
+ZephyrId=395063
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,391,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,392,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,393,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,394,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395064
+TC Symbol
+"Description, SB01-03.08_Order Amendment_007"
+ZephyrId=395064
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,401,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,402,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,403,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,404,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395065
+TC Symbol
+"Description, SB01-03.08_Order Amendment_008"
+ZephyrId=395065
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,411,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,412,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,413,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,414,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395066
+TC Symbol
+"Description, SB01-03.08_Order Amendment_009"
+ZephyrId=395066
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,421,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,422,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,423,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,424,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395067
+TC Symbol
+"Description, SB01-03.08_Order Amendment_010"
+ZephyrId=395067
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,431,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,432,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,433,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,434,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395068
+TC Symbol
+"Description, SB01-03.9_Order Cancellation_001"
+ZephyrId=395068
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,441,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,442,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,443,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,444,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395069
+TC Symbol
+"Description, SB01-03.9_Order Cancellation_002"
+ZephyrId=395069
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,451,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,452,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,453,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,454,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395070
+TC Symbol
+"Description, SB01-03.9_Order Cancellation_003"
+ZephyrId=395070
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,461,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,462,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,463,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,464,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395071
+TC Symbol
+"Description, SB01-03.9_Order Cancellation_004"
+ZephyrId=395071
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,471,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,472,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,473,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,474,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395072
+TC Symbol
+"Description, SB01-03.9_Order Cancellation_005"
+ZephyrId=395072
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,481,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,482,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,483,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,484,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395073
+TC Symbol
+"Description, SB01-03.9_Order Cancellation_006"
+ZephyrId=395073
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,491,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,492,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,493,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,494,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395074
+TC Symbol
+"Description, SB01-03.9_Order Cancellation_007"
+ZephyrId=395074
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,501,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,502,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,503,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,504,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395075
+TC Symbol
+"Description, SB01-03.9_Order Cancellation_009"
+ZephyrId=395075
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,511,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,512,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,513,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,514,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395076
+TC Symbol
+"Description, SB01-03.10_Mass Cancellation_001"
+ZephyrId=395076
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,521,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,522,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,523,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,524,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395077
+TC Symbol
+"Description, SB01-03.10_Mass Cancellation_002"
+ZephyrId=395077
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,531,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,532,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,533,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,534,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395078
+TC Symbol
+"Description, SB01-03.10_Mass Cancellation_003"
+ZephyrId=395078
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,541,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,542,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,543,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,544,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395079
+TC Symbol
+"Description, SB01-03.10_Mass Cancellation_004"
+ZephyrId=395079
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,551,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,552,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,553,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,554,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395080
+TC Symbol
+"Description, SB01-03.10_Mass Cancellation_005"
+ZephyrId=395080
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,561,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,562,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,563,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,564,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395081
+TC Symbol
+"Description, SB01-03.10_Mass Cancellation_006"
+ZephyrId=395081
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,571,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,572,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,573,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,574,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395082
+TC Symbol
+"Description, SB01-03.10_Mass Cancellation_007"
+ZephyrId=395082
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,581,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,582,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,583,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,584,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395083
+TC Symbol
+"Description, SB01-03.12_Mass Quote_001"
+ZephyrId=395083
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395084
+TC Symbol
+"Description, SB01-03.12_Mass Quote_002"
+ZephyrId=395084
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395085
+TC Symbol
+"Description, SB01-03.12_Mass Quote_003"
+ZephyrId=395085
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395086
+TC Symbol
+"Description, SB01-03.12_Mass Quote_004"
+ZephyrId=395086
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395087
+TC Symbol
+"Description, SB01-03.12_Mass Quote_005"
+ZephyrId=395087
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395088
+TC Symbol
+"Description, SB01-03.12_Mass Quote_006"
+ZephyrId=395088
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395089
+TC Symbol
+"Description, SB01-03.12_Mass Quote_007"
+ZephyrId=395089
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395090
+TC Symbol
+"Description, SB01-03.12_Mass Quote_008"
+ZephyrId=395090
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395091
+TC Symbol
+"Description, SB01-03.12_Mass Quote_009"
+ZephyrId=395091
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395092
+TC Symbol
+"Description, SB01-03.12_Mass Quote_010"
+ZephyrId=395092
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395093
+TC Symbol
+"Description, SB01-03.12_Mass Quote_011"
+ZephyrId=395093
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395094
+TC Symbol
+"Description, SB01-03.12_Mass Quote_012"
+ZephyrId=395094
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395095
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_001"
+ZephyrId=395095
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395096
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_002"
+ZephyrId=395096
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395097
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_003"
+ZephyrId=395097
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395098
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_004"
+ZephyrId=395098
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395099
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_005"
+ZephyrId=395099
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395100
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_006"
+ZephyrId=395100
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395101
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_007"
+ZephyrId=395101
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395102
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_008"
+ZephyrId=395102
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395103
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_009"
+ZephyrId=395103
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395104
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_010"
+ZephyrId=395104
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395105
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_011"
+ZephyrId=395105
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395106
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_012"
+ZephyrId=395106
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395107
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_013"
+ZephyrId=395107
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395108
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_014"
+ZephyrId=395108
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395109
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_015"
+ZephyrId=395109
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395110
+TC Symbol
+"Description, SB01-03.14_Speed Bumps_016"
+ZephyrId=395110
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395111
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_001"
+ZephyrId=395111
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395112
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_002"
+ZephyrId=395112
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395113
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_003"
+ZephyrId=395113
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395114
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_004"
+ZephyrId=395114
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395115
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_005"
+ZephyrId=395115
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395116
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_006"
+ZephyrId=395116
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395117
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_007"
+ZephyrId=395117
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395118
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_008"
+ZephyrId=395118
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395119
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_009"
+ZephyrId=395119
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395120
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_010"
+ZephyrId=395120
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395121
+TC Symbol
+"Description, SB01-03.20_In-flight Order Processing_012"
+ZephyrId=395121
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395122
+TC Symbol
+"Description, SB01-03.21_Trade Reporting_001"
+ZephyrId=395122
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,591,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,592,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,593,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,594,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395123
+TC Symbol
+"Description, SB01-03.21_Trade Reporting_002"
+ZephyrId=395123
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,601,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,602,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,603,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,604,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395124
+TC Symbol
+"Description, SB01-03.21_Trade Reporting_003"
+ZephyrId=395124
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,611,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,612,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,613,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,614,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395125
+TC Symbol
+"Description, SB01-03.21_Trade Reporting_004"
+ZephyrId=395125
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,621,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,622,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,623,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,624,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395126
+TC Symbol
+"Description, SB01-03.21_Trade Reporting_005"
+ZephyrId=395126
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,631,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,632,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,633,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,634,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395127
+TC Symbol
+"Description, SB01-03.21_Trade Reporting_004"
+ZephyrId=395127
+Status,ID,PreviousID,step_type,Action,User,protocol,Symbol,SecurityID,Side,OrderQty,Price,OrderType,Text,MassCancelRequestType,TIF,#_id,#_previousID,AccountType,ClOrdID,ContractCode,ExecInst,LastQty,NoPartyIDs,startTime,tomStartTime,ClientOrderID,ExecInstruction,LastQuantity,OrderPrice,OrderQuantity
+Regular,641,,send,MarketSession,,,,,,,,,,,,,,,,ZSDF,,,,,,,,,,
+,642,,send,MncCreateSchedule,,MNC,,,,,,,,,,,,,,ZSDF,,,,T00:30:00-T+1-T22:00:00-T22:30:00,T21:45:00,,,,,
+,643,,send,MassCancel,bin_tripsg101_1,BIN,,,,,,,,7,,,,,,ZSDF,,,,,,,,,,
+,644,,send,New,bin_tripsg101_1,BIN,ZSDF_M1,,Buy,10,"Func(LFC_int(""ZSDF_M1""))",Limit,order,,Day,0_t1,,3,,,o,,"[{'PartyRole': '300', 'PartyIDSource': 'P', 'PartyID': '15'}, {'PartyRole': '11', 'PartyIDSource': 'D', 'PartyID': 'HFE'}, {'PartyRole': '81', 'PartyIDSource': 'D', 'PartyID': '1C'}, {'PartyRole': '301', 'PartyIDSource': 'P', 'PartyID': '8'}]",,,,,,,
+,,,assertion,ExecutionReport,bin_tripsg101_1,BIN,,ZSDF_M1,1,,,,,,,,0_t1,,,,,,,,,,,10,,
+TEST_CASE_END
+
+TEST_CASE_START
+395128
+TC Symbol
+"Description, SB01-03.13_RFQ_001"
+ZephyrId=395128
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395129
+TC Symbol
+"Description, SB01-03.11_Self Execution Prevention_001"
+ZephyrId=395129
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395130
+TC Symbol
+"Description, SB01-03.18_Self Execution Prevention_001"
+ZephyrId=395130
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395131
+TC Symbol
+"Description, SB01-03.18_Self Execution Prevention_002"
+ZephyrId=395131
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395132
+TC Symbol
+"Description, SB01-03.18_Self Execution Prevention_003"
+ZephyrId=395132
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
+TEST_CASE_START
+395133
+TC Symbol
+"Description, SB01-03.18_Self Execution Prevention_004"
+ZephyrId=395133
+Status,ID,PreviousID,step_type,Action,User,protocol
+TEST_CASE_END
+
